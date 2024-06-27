@@ -12,12 +12,7 @@ const App = () => {
 	];
 
 	const surprise = () => {
-		const randomValue =
-			surpriseOptions[
-				Math.floor(
-					Math.random() * surpriseOptions.length
-				)
-			];
+		const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
 
 		setValue(randomValue);
 	};
@@ -38,10 +33,7 @@ const App = () => {
 					"Content-Type": "application/json",
 				},
 			};
-			const response = await fetch(
-				"http://localhost:8000/gemini",
-				options
-			);
+			const response = await fetch(`http://localhost:${process.env.PORT || 8000}/gemini`, options);
 			const data = await response.text();
 			console.log(data);
 			setChatHistory((oldChatHistory) => [
@@ -58,9 +50,7 @@ const App = () => {
 			setValue("");
 		} catch (err) {
 			console.error(err);
-			setError(
-				"Something went wrong! Please try again later."
-			);
+			setError("Something went wrong! Please try again later.");
 		}
 	};
 
@@ -87,18 +77,10 @@ const App = () => {
 					type="text"
 					value={value}
 					placeholder="When is Christmas...?"
-					onChange={(e) =>
-						setValue(e.target.value)
-					}
+					onChange={(e) => setValue(e.target.value)}
 				/>
-				{!error && (
-					<button onClick={getResponse}>
-						Ask Me
-					</button>
-				)}
-				{error && (
-					<button onClick={clear}>Clear</button>
-				)}
+				{!error && <button onClick={getResponse}>Ask Me</button>}
+				{error && <button onClick={clear}>Clear</button>}
 			</div>
 			{error && <p>{error}</p>}
 
@@ -106,11 +88,7 @@ const App = () => {
 				{chatHistory.map((chatItem, index) => (
 					<div key={index}>
 						<p className="answer">
-							{chatItem.role}:{" "}
-							{chatItem.parts.map(
-								(item) =>
-									item.text
-							)}
+							{chatItem.role}: {chatItem.parts.map((item) => item.text)}
 						</p>
 					</div>
 				))}
