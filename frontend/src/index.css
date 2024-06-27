@@ -78,6 +78,7 @@ p {
 
 .search-result {
 	margin-top: 10px;
+	margin-bottom: 10px;
 	overflow: scroll;
 	scrollbar-width: none;
 }
