@@ -40,16 +40,18 @@ p {
 .input-container {
 	display: flex;
 	width: 100%;
+	height: fit-content;
 	border: 0.5px solid #cacaca;
 	box-sizing: border-box;
 	border-radius: 6px;
 	box-shadow: rgba(0, 0, 82, 0.15) 0 2px 4px;
-	overflow: hidden;
 }
 
 .input-container input {
 	border: none;
+	border-radius: inherit;
 	padding: 13px 14px;
+	height: 40px;
 	box-sizing: border-box;
 	font-size: 15px;
 	outline: none;
@@ -65,6 +67,8 @@ p {
 .input-container button {
 	min-width: 10%;
 	border: none;
+	border-top-right-radius: inherit;
+	border-bottom-right-radius: inherit;
 	border-left: 1px solid #cacaca;
 	background-color: #fff;
 	color: #777;
@@ -78,12 +82,13 @@ p {
 
 .search-result {
 	margin-top: 10px;
-	margin-bottom: 10px;
+	padding-bottom: 40px;
 	overflow: scroll;
 	scrollbar-width: none;
 }
 
 .answer {
+	display: flex;
 	padding: 13px 14px;
 	border: 0.5px solid #cacaca;
 	background-color: #fff;
@@ -91,4 +96,9 @@ p {
 	font-size: 15px;
 	font-weight: 200;
 	border-radius: 6px;
+}
+
+.answer-text {
+	display: block;
+	margin-left: 10px;
 }

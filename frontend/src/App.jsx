@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Markdown from "react-markdown";
 
 const App = () => {
 	const [value, setValue] = useState("");
@@ -87,9 +88,17 @@ const App = () => {
 			<div className="search-result">
 				{chatHistory.map((chatItem, index) => (
 					<div key={index}>
-						<p className="answer">
-							{chatItem.role}: {chatItem.parts.map((item) => item.text)}
-						</p>
+						<div className="answer">
+							<p>{chatItem.role}:</p>
+							{chatItem.parts.map((item, index) => (
+								<Markdown
+									key={index}
+									className="answer-text"
+								>
+									{item.text}
+								</Markdown>
+							))}
+						</div>
 					</div>
 				))}
 			</div>
